@@ -1,23 +1,15 @@
 services:
   - type: web
     name: chatbot-asma
-    env: python
+    env: docker # <--- Change "python" par "docker" ici
     region: frankfurt
     plan: free
     branch: main
-
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
-
+    # Supprime buildCommand et startCommand car le Dockerfile s'en occupe !
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0  # <--- AJOUTE CETTE LIGNE ICI !
-
       - key: GROQ_API_KEY
         sync: false
-
       - key: GROQ_MODEL
         value: llama-3.3-70b-versatile
-
       - key: CHROMA_PERSIST_DIRECTORY
         value: /opt/render/project/src/chroma_db
