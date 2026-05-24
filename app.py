@@ -14,8 +14,17 @@ from dotenv import load_dotenv
 import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from groq import Groq
 from loguru import logger
+
+# Patch de compatibilité httpx/groq
+import httpx
+_original_init = httpx.Client.__init__
+def _patched_init(self, *args, **kwargs):
+    kwargs.pop("proxies", None)
+    _original_init(self, *args, **kwargs)
+httpx.Client.__init__ = _patched_init
+
+from groq import Groq
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -67,7 +76,7 @@ def initialize_embeddings():
     global embeddings
     logger.info("Initialisation du modèle d'embeddings...")
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
         model_kwargs={'device': 'cpu'},
         encode_kwargs={'normalize_embeddings': True}
     )
