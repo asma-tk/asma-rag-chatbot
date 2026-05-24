@@ -7,8 +7,19 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Installer les dépendances système si nécessaire
-RUN apt-get update && apt-get install -y --no-install-recommends gcc g++ && rm -rf /var/lib/apt/lists/*
+# Installer les dépendances système nécessaires pour compiler pydantic-core
+# Ajout de rust et cargo pour la compilation de pydantic-core
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    curl \
+    build-essential \
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    && . $HOME/.cargo/env \
+    && rm -rf /var/lib/apt/lists/*
+
+# Ajouter Rust au PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Copier et installer les requirements
 COPY requirements.txt .
