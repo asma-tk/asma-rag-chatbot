@@ -5,8 +5,6 @@ Chatbot personnel pour Asma Taberkokt
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import List, Optional
 import os
@@ -318,8 +316,16 @@ async def startup_event():
 
 @app.get("/")
 async def root():
-    """Sert la page HTML principale"""
-    return FileResponse("index.html")
+    """Page d'accueil de l'API"""
+    return {
+        "message": "Chatbot API Asma Taberkokt",
+        "version": "1.0.0",
+        "endpoints": {
+            "health": "/health",
+            "chat": "/chat",
+            "stats": "/stats"
+        }
+    }
 
 @app.get("/health")
 async def health_check():
@@ -375,8 +381,7 @@ async def get_stats():
         "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2"
     }
 
-# Servir les fichiers statiques
-app.mount("/static", StaticFiles(directory="."), name="static")
+# Note: Les fichiers statiques (frontend) sont maintenant déployés séparément sur Netlify
 
 if __name__ == "__main__":
     import uvicorn
