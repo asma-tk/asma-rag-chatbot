@@ -1,8 +1,8 @@
-# 🤖 Chatbot Personnel RAG - Asma Taberkokt
+# Chatbot Personnel RAG - Asma Taberkokt
 
 Un chatbot intelligent utilisant la technologie RAG (Retrieval-Augmented Generation) pour répondre aux questions sur Asma Taberkokt, développeuse IA passionnée.
 
-## 🔄 Architecture RAG
+## Architecture RAG
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -19,9 +19,9 @@ Un chatbot intelligent utilisant la technologie RAG (Retrieval-Augmented Generat
            ↓
     🔍 Retriever (Recherche sémantique)
            ↓
-    📝 Context + Prompt (LangChain)
+    📝 Context + Prompt + Query Rewriting
            ↓
-    🤖 Claude API (Anthropic)
+    🦙 Ollama Phi3 (LLM local)
            ↓
     ✨ Réponse finale
 ```
@@ -32,57 +32,77 @@ Un chatbot intelligent utilisant la technologie RAG (Retrieval-Augmented Generat
 2. **Chunking** : Découpage du texte en morceaux de 500 caractères avec chevauchement
 3. **Embeddings** : Conversion des chunks en vecteurs numériques multilingues
 4. **ChromaDB** : Stockage des vecteurs pour recherche rapide
-5. **Retriever** : Récupération des 3 chunks les plus pertinents pour la question
-6. **Context + Prompt** : Construction du prompt avec contexte et historique
-7. **Claude API** : Génération de la réponse par l'IA
-8. **Réponse finale** : Affichage dans l'interface utilisateur
+5. **Query Rewriting** : Reformulation intelligente de la question avec historique
+6. **Retriever** : Récupération des 3 chunks les plus pertinents
+7. **Context + Prompt** : Construction du prompt avec contexte formaté
+8. **Ollama Phi3** : Génération de la réponse par le LLM local
+9. **Réponse finale** : Affichage dans l'interface utilisateur
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-- 🧠 **RAG (Retrieval-Augmented Generation)** : Récupération intelligente d'informations
-- 🎨 **Interface élégante et féminine** : Design moderne avec animations fluides
-- 💬 **Conversations naturelles** : Propulsé par Claude AI (Anthropic)
-- 📚 **Base de connaissances vectorielle** : ChromaDB pour recherche sémantique
-- 🔄 **Historique de conversation** : Contexte maintenu pour cohérence
-- 🌐 **API REST** : Backend FastAPI performant
-- 📱 **Responsive** : Fonctionne sur desktop et mobile
+- **RAG (Retrieval-Augmented Generation)** : Récupération intelligente d'informations
+- **Interface élégante et féminine** : Design moderne avec animations fluides
+- **Conversations naturelles** : Propulsé par Ollama Phi3 (100% local et gratuit)
+- **Query Rewriting** : Reformulation intelligente des questions avec historique
+- **Base de connaissances vectorielle** : ChromaDB pour recherche sémantique
+- **Historique de conversation** : Contexte maintenu pour cohérence
+- **API REST** : Backend FastAPI performant
+- **Responsive** : Fonctionne sur desktop et mobile
+- **Aucun coût d'API** : Tout fonctionne en local
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 ### Backend
 - **FastAPI** : Framework web moderne et rapide
+- **Ollama Phi3** : LLM local (2.2 GB, gratuit)
 - **LangChain** : Framework pour applications LLM
 - **ChromaDB** : Base de données vectorielle
-- **Claude AI** : Modèle de langage d'Anthropic (claude-3-5-sonnet)
 - **Sentence Transformers** : Génération d'embeddings multilingues
-- **Tiktoken** : Tokenization pour comptage de tokens
 
 ### Frontend
 - **HTML5/CSS3** : Interface moderne avec animations CSS
 - **JavaScript Vanilla** : Pas de framework, performances optimales
 - **Google Fonts** : Typographie élégante (Poppins, Playfair Display)
 
-## 📋 Prérequis
+## Prérequis
 
 - Python 3.8 ou supérieur
 - pip (gestionnaire de paquets Python)
-- Clé API Anthropic (Claude AI)
+- Ollama installé (https://ollama.ai)
+- Modèle Phi3 téléchargé (`ollama pull phi3`)
 
-## 🚀 Installation
+## Installation
 
-### 1. Cloner le projet
+### 1. Installer Ollama
 
+**macOS/Linux:**
 ```bash
-cd chatbot
+curl -fsSL https://ollama.ai/install.sh | sh
 ```
 
-### 2. Créer un environnement virtuel
+**Windows:**
+Téléchargez depuis https://ollama.ai/download
+
+### 2. Télécharger le modèle Phi3
+
+```bash
+ollama pull phi3
+```
+
+### 3. Cloner le projet
+
+```bash
+git clone https://github.com/asma-tk/asma-rag-chatbot.git
+cd asma-rag-chatbot
+```
+
+### 4. Créer un environnement virtuel
 
 ```bash
 python3 -m venv venv
 ```
 
-### 3. Activer l'environnement virtuel
+### 5. Activer l'environnement virtuel
 
 **macOS/Linux:**
 ```bash
@@ -94,47 +114,40 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-### 4. Installer les dépendances
+### 6. Installer les dépendances
 
 ```bash
 pip install -r requirements.txt
 ```
 
-⏱️ L'installation peut prendre quelques minutes (téléchargement des modèles d'embeddings).
+L'installation peut prendre quelques minutes (téléchargement des modèles d'embeddings).
 
-### 5. Configurer les variables d'environnement
-
-Créez un fichier `.env` à la racine du projet :
-
-```bash
-cp .env.example .env
-```
-
-Éditez le fichier `.env` et ajoutez votre clé API Anthropic :
-
-```env
-ANTHROPIC_API_KEY=votre_clé_api_ici
-CHROMA_PERSIST_DIRECTORY=./chroma_db
-HOST=0.0.0.0
-PORT=8000
-```
-
-**Pour obtenir une clé API Anthropic :**
-1. Allez sur [console.anthropic.com](https://console.anthropic.com)
-2. Créez un compte ou connectez-vous
-3. Générez une clé API dans les paramètres
-4. Copiez la clé dans votre fichier `.env`
-
-### 6. Personnaliser les données
+### 7. Personnaliser les données
 
 Éditez le fichier `data.txt` avec vos propres informations personnelles. Le fichier actuel contient les informations d'Asma Taberkokt comme exemple.
 
-## 🎯 Utilisation
+## Utilisation
 
-### Démarrer le serveur
+### Méthode 1 : Script de démarrage (Recommandé)
 
 ```bash
-python app.py
+./start.sh
+```
+
+Le script vérifie automatiquement :
+- Environnement virtuel
+- Ollama en cours d'exécution
+- Modèle phi3 installé
+
+### Méthode 2 : Démarrage manuel
+
+```bash
+# Démarrer Ollama (si pas déjà démarré)
+ollama serve
+
+# Dans un autre terminal
+source venv/bin/activate
+python3 app.py
 ```
 
 Le serveur démarrera sur `http://localhost:8000`
@@ -144,7 +157,7 @@ Vous verrez dans les logs :
 🚀 Démarrage de l'application...
 ✓ Modèle d'embeddings initialisé
 ✓ ChromaDB initialisé
-✓ Claude AI initialisé
+✓ Ollama phi3 connecté et fonctionnel
 ✓ Fichier chargé (XXX caractères)
 ✓ Texte découpé en XX chunks
 ✓ XX chunks indexés dans ChromaDB
