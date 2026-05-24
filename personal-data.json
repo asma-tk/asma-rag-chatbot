@@ -1,0 +1,49 @@
+{
+  "nom": "Votre Nom",
+  "prenom": "Votre Prénom",
+  "age": "Votre âge",
+  "profession": "Votre profession",
+  "ville": "Votre ville",
+  "pays": "Votre pays",
+  
+  "competences": [
+    "Compétence 1",
+    "Compétence 2",
+    "Compétence 3"
+  ],
+  
+  "hobbies": [
+    "Hobby 1",
+    "Hobby 2",
+    "Hobby 3"
+  ],
+  
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  
+  "education": "Votre formation",
+  "experience": "Votre expérience professionnelle",
+  "email": "votre.email@example.com",
+  "telephone": "Votre numéro",
+  
+  "bio": "Une courte biographie sur vous. Décrivez qui vous êtes, ce que vous faites, vos passions, etc.",
+  
+  "projets": [
+    {
+      "nom": "Projet 1",
+      "description": "Description du projet"
+    },
+    {
+      "nom": "Projet 2",
+      "description": "Description du projet"
+    }
+  ],
+  
+  "reseaux_sociaux": {
+    "linkedin": "Votre profil LinkedIn",
+    "github": "Votre profil GitHub",
+    "twitter": "Votre profil Twitter"
+  }
+}

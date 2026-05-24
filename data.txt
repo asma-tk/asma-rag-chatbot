@@ -1,0 +1,195 @@
+ASMA TABERKOKT - PROFIL PERSONNEL
+
+=== INFORMATIONS GÉNÉRALES ===
+
+Nom complet : Asma Taberkokt
+Localisation actuelle : Toulouse, France
+Email : asmataberkokt05@gmail.com
+Téléphone : 06 02 95 42 58
+LinkedIn : /asma-t-5b71b6217
+GitLab : https://gitlab.com/asma1315
+Formation en cours : Développement en Intelligence Artificielle, Microsoft by Simplon (depuis décembre 2025, certification prévue décembre 2026)
+Diplôme obtenu : Master en Génie des Procédés, Université Saad Dahleb (2019)
+
+=== PRÉSENTATION PERSONNELLE ===
+
+Je m'appelle Asma Taberkokt. Je suis développeuse IA en formation certifiante Microsoft by Simplon. Mon parcours académique initial m'a menée vers un master en génie des procédés, mais ma passion pour l'innovation technologique et mon désir d'avoir un impact positif sur la société m'ont naturellement orientée vers l'intelligence artificielle.
+
+Je recherche un stage en machine learning de juin à novembre 2026 pour participer à des projets concrets impliquant la conception, l'entraînement et le déploiement de modèles IA.
+
+Cette transition représente pour moi bien plus qu'un simple changement de carrière : c'est l'accomplissement d'une véritable vocation. Chaque jour, je découvre de nouvelles possibilités offertes par l'intelligence artificielle, et cette exploration continue de nourrir ma motivation.
+
+=== FORMATION ET ÉDUCATION ===
+
+Décembre 2025 - En cours :
+Développement en Intelligence Artificielle
+Microsoft by Simplon
+Certification professionnelle prévue décembre 2026
+Contenu : conception et entraînement de modèles ML, manipulation de bases de données, intégration d'outils LLM, développement de systèmes RAG, utilisation de vector embeddings.
+
+2025 :
+Développement iOS
+Apple Foundation Program, Simplon
+Initiation au design UX, initiation au langage Swift, création d'une application de loisirs pour personnes âgées, construction d'interfaces iOS créatives.
+
+2019 :
+Master en Génie des Procédés
+Université Saad Dahleb
+Cours avancés : Mécanique des fluides avancée, Procédés de séparation, Conception de réacteurs.
+Logiciels : Aspen HYSYS, AutoCAD, Microsoft Project, Excel (Tableaux croisés dynamiques / VBA).
+
+2019 :
+Stage de fin d'études - Contrôle qualité membranes OI
+SNC LAVALIN
+Analyse de conformité et détection d'anomalies sur membranes d'osmose inverse, tests rigoureux et validation des résultats, travail selon des procédures industrielles strictes.
+
+=== COMPÉTENCES TECHNIQUES IA & LLM ===
+
+Systèmes IA et LLM :
+- Intégration de LLM et conception de pipelines RAG
+- Systèmes de vector embeddings et retrieval
+- Deep learning avec Transformers
+- PyTorch / TensorFlow (en formation)
+
+Machine Learning :
+- Conception, entraînement et évaluation de modèles ML
+- Classification d'images (CNN)
+- Collecte et prétraitement des données
+- Développement et monitoring d'API REST
+
+Outils et collaboration :
+- Python : scripting, automatisation, analyse
+- GitLab / GitHub : contrôle de version
+- Figma : prototypage UI/UX
+- Agile : Trello, collaboration en équipe
+
+=== COMPÉTENCES TECHNIQUES INGÉNIERIE ===
+
+Logiciels : Aspen HYSYS, AutoCAD, Microsoft Project, Excel (Tableaux croisés dynamiques / VBA)
+
+=== COMPÉTENCES TECHNIQUES EN DÉVELOPPEMENT ===
+
+Dans le cadre de ma formation en IA, je développe activement mes compétences dans :
+- Python et ses bibliothèques (NumPy, Pandas, Scikit-learn)
+- Frameworks de deep learning (TensorFlow, PyTorch)
+- Traitement du langage naturel (NLP)
+- Vision par ordinateur
+- Systèmes de recommandation
+- MLOps et déploiement de modèles
+- APIs et développement web (FastAPI, Flask)
+- Bases de données vectorielles (ChromaDB, Pinecone)
+- LangChain et frameworks pour LLMs
+- Git et collaboration en équipe
+
+=== MOTIVATION ET PASSION POUR L'IA ===
+
+Mon choix de me spécialiser en intelligence artificielle découle d'une passion profonde pour ce domaine révolutionnaire. Ce qui me fascine particulièrement dans l'IA, c'est sa capacité à transformer des idées abstraites en solutions concrètes qui peuvent réellement améliorer la vie des gens.
+
+L'intelligence artificielle représente pour moi un terrain de créativité illimitée. Contrairement à d'autres domaines plus contraints, l'IA offre la possibilité d'imaginer et de construire presque tout ce que l'on peut concevoir.
+
+Ma motivation principale est de développer des technologies qui ont un impact positif et tangible sur le quotidien des personnes. Je ne veux pas simplement créer des algorithmes performants, mais des outils qui répondent à de vrais besoins humains.
+
+=== OBJECTIFS PROFESSIONNELS ===
+
+Objectif à court terme : Obtenir un stage en machine learning de juin à novembre 2026. Devenir développeuse IA spécialisée dans des projets liés à la robotique, avec une focus sur les applications qui aident les personnes dans leur vie quotidienne.
+
+Objectif à moyen terme (3 ans) : Travailler dans une grande entreprise française reconnue dans le domaine de l'IA, contribuer à des projets d'envergure qui repoussent les limites de ce qui est possible avec l'intelligence artificielle.
+
+Objectif à long terme : Fonder ma propre entreprise d'intelligence artificielle reconnue mondialement et aller à Silicon Valley pour être au cœur de l'innovation technologique.
+
+=== QUALITÉS PERSONNELLES ===
+
+Patience : Je sais prendre le temps nécessaire pour comprendre en profondeur les concepts complexes et résoudre les problèmes méthodiquement.
+
+Optimisme : Je garde toujours une attitude positive face aux défis, voyant chaque obstacle comme une opportunité d'apprentissage.
+
+Courage : Je n'hésite pas à sortir de ma zone de confort et à relever de nouveaux défis, comme ma reconversion professionnelle le démontre.
+
+Altruisme : Aider les autres est au cœur de mes motivations, tant dans mes projets professionnels que dans mes interactions quotidiennes.
+
+Détermination : Une fois un objectif fixé, je mets tout en œuvre pour l'atteindre, avec persévérance et discipline.
+
+Curiosité intellectuelle : J'ai une soif constante d'apprendre et de découvrir de nouvelles technologies et méthodes.
+
+Créativité et attention aux détails : Je prête une attention particulière à la qualité de mon travail.
+
+Esprit d'équipe : Je collabore efficacement avec des profils variés.
+
+=== COMPÉTENCES LINGUISTIQUES ===
+
+Langues maîtrisées :
+- Kabyle (langue maternelle) - Niveau natif
+- Arabe - Niveau courant
+- Français - Niveau courant
+- Anglais - IELTS Academic B2 / C2 CECRL
+- Allemand - CECRL B2
+- Turc - Niveau courant
+
+Langues en apprentissage :
+- Espagnol - Niveau débutant
+- Chinois - Niveau débutant
+
+=== DOMAINES D'INTÉRÊT EN IA ===
+
+Recherche en IA : Je suis fascinée par les avancées théoriques et les nouvelles architectures de modèles. Je suis régulièrement les publications scientifiques et les conférences majeures du domaine.
+
+Systèmes agentiques : L'idée de créer des agents autonomes capables de raisonner et d'agir de manière intelligente me passionne particulièrement. Je m'intéresse aux architectures multi-agents et à leur coordination.
+
+Robotique : Mon objectif principal est de travailler sur des projets robotiques qui peuvent aider les gens au quotidien.
+
+Large Language Models (LLMs) : Je m'intéresse particulièrement aux techniques de fine-tuning, au RAG et aux applications pratiques des LLMs.
+
+Vision par ordinateur : L'analyse d'images et de vidéos par IA ouvre des possibilités infinies dans de nombreux domaines.
+
+IA éthique et responsable : Je suis consciente de l'importance de développer des systèmes IA éthiques, transparents et équitables.
+
+=== MÉTHODE DE TRAVAIL ET RÉSOLUTION DE PROBLÈMES ===
+
+Face à un problème technique, j'adopte une approche structurée et méthodique :
+1. Recherche autonome : consultation de la documentation officielle et recherches sur Google et forums spécialisés.
+2. Analyse et compréhension : prendre le temps de bien comprendre la nature du problème avant de chercher une solution.
+3. Expérimentation : tester différentes approches et apprendre par la pratique.
+4. Collaboration : demander de l'aide quand je suis bloquée. Demander de l'aide est une force, pas une faiblesse.
+5. Documentation : documenter mes solutions pour m'y référer plus tard et partager mes connaissances.
+
+=== TRAVAIL EN ÉQUIPE ET AUTONOMIE ===
+
+J'apprécie autant le travail en équipe que le travail en autonomie. En équipe, je bénéficie de perspectives différentes et développe mes compétences en communication. En autonomie, j'avance à mon rythme et renforce ma confiance en mes capacités.
+
+=== MÉTHODE D'APPRENTISSAGE ===
+
+Ma philosophie d'apprentissage repose sur la pratique intensive, l'utilisation de ressources variées (YouTube, tutoriels, documentation officielle), l'équilibre vie-apprentissage, l'optimisation continue et l'apprentissage par l'enseignement.
+
+=== PASSIONS ET LOISIRS ===
+
+Sports et activités physiques :
+- Tir à l'arc : une discipline qui demande concentration, précision et maîtrise de soi
+- Natation : un sport complet qui me permet de me ressourcer
+- Randonnée (hiking)
+- Sport en général : je maintiens une activité physique régulière
+
+Activités créatives :
+- Dessin hyperréaliste : j'aime exprimer ma créativité à travers le dessin
+- Peinture : une passion qui me permet de me détendre
+
+Développement personnel :
+- Méditation : une pratique quotidienne qui m'aide à rester centrée
+- Voyages en Asie : j'adore découvrir de nouveaux endroits et cultures
+
+Culture et divertissement :
+- Animés préférés : Demon Slayer (Kimetsu no Yaiba), Tokyo Ghoul
+- Séries policières : j'aime les intrigues complexes et la résolution de mystères
+
+=== VISION ET RÊVES ===
+
+Mon rêve professionnel ultime est de devenir fondatrice d'une entreprise d'intelligence artificielle reconnue mondialement. Je veux créer une entreprise qui développe des solutions IA innovantes, a un impact positif mesurable sur la vie des gens, respecte les principes éthiques, attire les meilleurs talents et contribue à l'avancement de la recherche en IA.
+
+Je me vois aller à Silicon Valley, épicentre de l'innovation technologique. Mon objectif est d'utiliser l'IA pour résoudre des problèmes concrets, particulièrement dans des domaines comme la santé, l'éducation et l'assistance aux personnes en situation de handicap.
+
+=== PHILOSOPHIE PERSONNELLE ===
+
+Ma philosophie de vie repose sur : l'apprentissage continu, l'impact positif, l'authenticité, la persévérance, la gratitude et l'équilibre entre vie professionnelle et personnelle.
+
+=== CONCLUSION ===
+
+Je suis Asma Taberkokt, développeuse IA en pleine ascension, déterminée à faire de ma vision une réalité. Avec mon background en génie des procédés, ma maîtrise de plusieurs langues, mes compétences en IA et ma détermination sans faille, je suis convaincue que je peux contribuer significativement au domaine de l'IA et créer des solutions qui changeront la vie des gens.
