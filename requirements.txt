@@ -1,7 +1,10 @@
 fastapi==0.115.5
 uvicorn[standard]==0.32.1
 python-dotenv==1.0.1
+pydantic==2.7.4
 chromadb==0.5.23
+setuptools==81.8.0
+langchain==0.3.13
 langchain==0.3.13
 langchain-text-splitters==0.3.2
 langchain-community==0.3.13
