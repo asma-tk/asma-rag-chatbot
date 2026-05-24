@@ -1,27 +1,11 @@
-# FastAPI et serveur
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
-python-multipart==0.0.6
-
-# LangChain et IA
-langchain==0.1.4
-langchain-community==0.0.16
-langchain-text-splitters==0.0.1
-
-# Ollama
-ollama>=0.6.2
-
-# ChromaDB pour le stockage vectoriel
-chromadb==0.4.22
-
-# Embeddings et tokenization
-sentence-transformers==2.3.1
-tiktoken==0.5.2
-
-# Utilitaires
-python-dotenv==1.0.0
-pydantic==2.5.3
-pydantic-settings==2.1.0
-
-# Logging
-loguru==0.7.2
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-dotenv==1.0.1
+chromadb==0.5.23
+langchain==0.3.13
+langchain-text-splitters==0.3.2
+langchain-community==0.3.13
+sentence-transformers==3.3.1
+groq==0.11.0
+loguru==0.7.3
+pydantic==2.10.3

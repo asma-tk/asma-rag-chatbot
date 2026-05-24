@@ -1,5 +1,5 @@
 """
-Chatbot RAG avec FastAPI, ChromaDB et Ollama Phi3
+Chatbot RAG avec FastAPI, ChromaDB et Groq API
 Chatbot personnel pour Asma Taberkokt
 """
 
@@ -14,16 +14,23 @@ from dotenv import load_dotenv
 import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from ollama import chat
+from groq import Groq
 from loguru import logger
 
 # Charger les variables d'environnement
 load_dotenv()
 
 # Configuration
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY non définie dans le fichier .env")
+
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-70b-versatile")
 CHROMA_PERSIST_DIRECTORY = os.getenv("CHROMA_PERSIST_DIRECTORY", "./chroma_db")
 DATA_FILE = "data.txt"
+
+# Initialiser le client Groq
+groq_client = Groq(api_key=GROQ_API_KEY)
 
 # Initialiser FastAPI
 app = FastAPI(
@@ -129,26 +136,26 @@ def index_data(chunks: List[str]):
     
     logger.info(f"✓ {len(chunks)} chunks indexés dans ChromaDB")
 
-def test_ollama_connection():
-    """Teste la connexion à Ollama"""
-    logger.info(f"Test de connexion à Ollama avec le modèle {OLLAMA_MODEL}...")
+def test_groq_connection():
+    """Teste la connexion à Groq API"""
+    logger.info(f"Test de connexion à Groq avec le modèle {GROQ_MODEL}...")
     try:
-        response = chat(
-            model=OLLAMA_MODEL,
-            messages=[{'role': 'user', 'content': 'Bonjour'}]
+        response = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[{'role': 'user', 'content': 'Bonjour'}],
+            max_tokens=10
         )
-        logger.info(f"✓ Ollama {OLLAMA_MODEL} connecté et fonctionnel")
+        logger.info(f"✓ Groq {GROQ_MODEL} connecté et fonctionnel")
         return True
     except Exception as e:
-        logger.error(f"❌ Erreur de connexion à Ollama: {e}")
-        logger.error(f"Assurez-vous qu'Ollama est installé et que le modèle {OLLAMA_MODEL} est téléchargé")
-        logger.error(f"Commande: ollama pull {OLLAMA_MODEL}")
+        logger.error(f"❌ Erreur de connexion à Groq: {e}")
+        logger.error(f"Vérifiez votre clé API GROQ_API_KEY dans le fichier .env")
         return False
 
 def rewrite_query(question: str, history: List[dict]) -> str:
     """
     Reformule la question utilisateur pour améliorer la recherche RAG.
-    Inspiré de MimiBot - adapté pour Ollama.
+    Inspiré de MimiBot - adapté pour Groq.
     """
     if not history or len(history) == 0:
         # Pas d'historique, on retourne la question telle quelle
@@ -187,18 +194,16 @@ Question actuelle :
 Reformule cette question pour optimiser une recherche sur Asma Taberkokt, son profil, ses projets, ses compétences et ses centres d'intérêt."""
 
     try:
-        response = chat(
-            model=OLLAMA_MODEL,
+        response = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
             messages=[
                 {'role': 'system', 'content': system_prompt},
                 {'role': 'user', 'content': user_prompt}
             ],
-            options={
-                "temperature": 0.2,
-                "num_predict": 100
-            }
+            temperature=0.2,
+            max_tokens=100
         )
-        rewritten = response.message.content.strip()
+        rewritten = response.choices[0].message.content.strip()
         logger.info(f"Question reformulée: {question} → {rewritten}")
         return rewritten
     except Exception as e:
@@ -263,20 +268,16 @@ Informations sur Asma Taberkokt :
     ]
     
     try:
-        response = chat(
-            model=OLLAMA_MODEL,
+        response = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
             messages=messages,
-            options={
-                "temperature": 0.3,
-                "top_p": 0.9,
-                "top_k": 40,
-                "num_predict": 200,
-                "stop": ["\n\nQuestion", "\n\nUtilisateur"]
-            }
+            temperature=0.3,
+            top_p=0.9,
+            max_tokens=500
         )
         
         # Nettoyage du markdown comme dans MimiBot
-        content = response.message.content
+        content = response.choices[0].message.content
         content = content.replace("**", "").replace("__", "")
         content = content.replace("•", "-")
         
@@ -294,7 +295,7 @@ async def startup_event():
         initialize_embeddings()
         initialize_chromadb()
         
-        if not test_ollama_connection():
+        if not test_groq_connection():
             logger.warning("⚠️ Ollama n'est pas disponible. Le chatbot ne fonctionnera pas correctement.")
         
         chunks = load_and_process_data()
@@ -317,7 +318,7 @@ async def health_check():
     return {
         "status": "healthy",
         "chroma_documents": collection.count() if collection else 0,
-        "model": OLLAMA_MODEL
+        "model": GROQ_MODEL
     }
 
 @app.post("/chat", response_model=ChatResponse)
@@ -361,7 +362,7 @@ async def get_stats():
     """Statistiques du système"""
     return {
         "total_documents": collection.count() if collection else 0,
-        "model": OLLAMA_MODEL,
+        "model": GROQ_MODEL,
         "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2"
     }
 

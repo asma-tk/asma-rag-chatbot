@@ -9,21 +9,21 @@ Un chatbot intelligent utilisant la technologie RAG (Retrieval-Augmented Generat
 │                    FLUX RAG COMPLET                         │
 └─────────────────────────────────────────────────────────────┘
 
-    📄 Documents (data.txt)
+    Documents (data.txt)
            ↓
-    ✂️  Chunking (RecursiveCharacterTextSplitter)
+   Chunking (RecursiveCharacterTextSplitter)
            ↓
-    🧮 Embeddings (Sentence Transformers)
+   Embeddings (Sentence Transformers)
            ↓
-    💾 ChromaDB (Base vectorielle)
+     ChromaDB (Base vectorielle)
            ↓
-    🔍 Retriever (Recherche sémantique)
+     Retriever (Recherche sémantique)
            ↓
-    📝 Context + Prompt + Query Rewriting
+     Context + Prompt + Query Rewriting
            ↓
-    🦙 Ollama Phi3 (LLM local)
+     Ollama Phi3 (LLM local)
            ↓
-    ✨ Réponse finale
+     Réponse finale
 ```
 
 ### Détails du processus
@@ -161,7 +161,7 @@ Vous verrez dans les logs :
 ✓ Fichier chargé (XXX caractères)
 ✓ Texte découpé en XX chunks
 ✓ XX chunks indexés dans ChromaDB
-✅ Application prête!
+ Application prête!
 ```
 
 ### Accéder au chatbot
@@ -263,7 +263,7 @@ context = retrieve_relevant_context(request.message, k=3)  # k = nombre de chunk
 - `k=3-5` : Bon équilibre (3 par défaut)
 - `k=5+` : Plus de contexte mais risque de bruit
 
-## 🎨 Personnalisation de l'interface
+##  Personnalisation de l'interface
 
 ### Modifier les couleurs
 
@@ -296,7 +296,7 @@ body {
 }
 ```
 
-## 🐛 Dépannage
+##  Dépannage
 
 ### Erreur : "ANTHROPIC_API_KEY non définie"
 
@@ -357,7 +357,7 @@ embeddings = HuggingFaceEmbeddings(
 )
 ```
 
-## 📊 API Endpoints
+##  API Endpoints
 
 ### POST /chat
 Envoyer un message au chatbot
@@ -404,7 +404,7 @@ Obtenir les statistiques du système
 }
 ```
 
-## 🚀 Déploiement
+##  Déploiement
 
 ### Déploiement local avec Uvicorn
 
@@ -454,16 +454,16 @@ docker build -t chatbot-rag .
 docker run -p 8000:8000 --env-file .env chatbot-rag
 ```
 
-## 🔒 Sécurité
+##  Sécurité
 
-- ⚠️ **Ne commitez JAMAIS** votre fichier `.env` avec votre clé API
-- ⚠️ Ajoutez `.env` à votre `.gitignore`
-- ⚠️ Utilisez des variables d'environnement en production
-- ⚠️ Limitez l'accès à votre API avec des tokens si nécessaire
-- ⚠️ Activez HTTPS en production
-- ⚠️ Implémentez un rate limiting pour éviter les abus
+-  **Ne commitez JAMAIS** votre fichier `.env` avec votre clé API
+-  Ajoutez `.env` à votre `.gitignore`
+-  Utilisez des variables d'environnement en production
+-  Limitez l'accès à votre API avec des tokens si nécessaire
+-  Activez HTTPS en production
+-  Implémentez un rate limiting pour éviter les abus
 
-## 💰 Coûts estimés
+##  Coûts estimés
 
 **Claude API (Anthropic) :**
 - Claude 3.5 Sonnet : ~$3 par million de tokens input, ~$15 par million de tokens output
@@ -473,7 +473,7 @@ docker run -p 8000:8000 --env-file .env chatbot-rag
 - Gratuit : Render, Railway (tier gratuit)
 - Payant : À partir de $5-10/mois
 
-## 📈 Améliorations futures
+##  Améliorations futures
 
 - [ ] Authentification utilisateur
 - [ ] Support multilingue automatique
@@ -488,7 +488,7 @@ docker run -p 8000:8000 --env-file .env chatbot-rag
 - [ ] Fine-tuning du modèle
 - [ ] A/B testing des prompts
 
-## 🤝 Contribution
+##  Contribution
 
 Les contributions sont les bienvenues ! N'hésitez pas à :
 
@@ -498,29 +498,21 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
-## 📝 Licence
+## Licence
 
 Ce projet est libre d'utilisation pour des projets personnels et éducatifs.
 
-## 👩‍💻 Auteur
+##  Auteur
 
 **Asma Taberkokt**
-- 🎓 Développeuse IA en formation
-- 🤖 Passionnée par la robotique et les systèmes agentiques
-- 🌟 Rêve de créer une entreprise IA reconnue mondialement
-- 🌍 Polyglotte (6 langues courantes)
-- 🎯 Objectif : Silicon Valley et impact positif sur la société
+-  Développeuse IA en formation
+-  Passionnée par la robotique et les systèmes agentiques
+-  Rêve de créer une entreprise IA reconnue mondialement
+-  Polyglotte (6 langues courantes)
+-  Objectif : Silicon Valley et impact positif sur la société
 
-## 🙏 Remerciements
 
-- **Anthropic** pour Claude AI
-- **LangChain** pour le framework RAG
-- **ChromaDB** pour la base vectorielle
-- **Sentence Transformers** pour les embeddings multilingues
-- **FastAPI** pour le framework web
-- La communauté open source
-
-## 📚 Ressources utiles
+##  Ressources utiles
 
 - [Documentation LangChain](https://python.langchain.com/)
 - [Documentation Anthropic](https://docs.anthropic.com/)
@@ -529,8 +521,7 @@ Ce projet est libre d'utilisation pour des projets personnels et éducatifs.
 
 ---
 
-Créé avec ❤️ et ✨ par Asma Taberkokt
+Créé avec  et  par Asma Taberkokt
 
 **Besoin d'aide ?** Ouvrez une issue sur GitHub ou contactez-moi !
-
-🚀 **Prêt à démarrer ?** Suivez les instructions d'installation ci-dessus !
+ **Prêt à démarrer ?** Suivez les instructions d'installation ci-dessus !
