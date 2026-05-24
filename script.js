@@ -1,5 +1,5 @@
 // Configuration
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://asma-rag-chatbot-2.onrender.com';
 let conversationHistory = [];
 
 // Éléments DOM
