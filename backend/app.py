@@ -293,7 +293,7 @@ Informations sur Asma Taberkokt :
         return content.strip()
     except Exception as e:
         logger.error(f"Erreur lors de la génération de réponse: {e}")
-        return "Désolé, je rencontre un problème technique. Assurez-vous qu'Ollama est en cours d'exécution."
+        return f"Désolé, je rencontre un problème technique avec l'API Groq. Erreur: {str(e)}"
 
 @app.on_event("startup")
 async def startup_event():

@@ -113,8 +113,7 @@ async function sendMessage(message) {
         // Message d'erreur élégant
         addMessage(
             "Désolé, je rencontre un problème technique. 😔\n\n" +
-            "Assurez-vous que le serveur est démarré avec la commande:\n" +
-            "python app.py\n\n" +
+            "Veuillez réessayer dans quelques instants.\n\n" +
             "Erreur: " + error.message,
             false
         );
