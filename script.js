@@ -14,9 +14,13 @@ function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
     
-    const avatarDiv = document.createElement('div');
-    avatarDiv.className = 'message-avatar';
-    avatarDiv.innerHTML = isUser ? '<span>👤</span>' : '<span>🤖</span>';
+    // Avatar seulement pour le bot
+    if (!isUser) {
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'message-avatar';
+        avatarDiv.innerHTML = '<img src="robot.png" alt="Robot" class="robot-avatar">';
+        messageDiv.appendChild(avatarDiv);
+    }
     
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
@@ -29,7 +33,6 @@ function addMessage(content, isUser = false) {
     textDiv.innerHTML = formattedContent;
     
     contentDiv.appendChild(textDiv);
-    messageDiv.appendChild(avatarDiv);
     messageDiv.appendChild(contentDiv);
     
     chatMessages.appendChild(messageDiv);
