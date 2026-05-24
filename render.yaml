@@ -1,11 +1,13 @@
 services:
   - type: web
     name: chatbot-asma
-    env: docker # <--- Change "python" par "docker" ici
+    env: docker
     region: frankfurt
     plan: free
     branch: main
-    # Supprime buildCommand et startCommand car le Dockerfile s'en occupe !
+    # Health check pour vérifier que l'application est prête
+    healthCheckPath: /health
+    # Variables d'environnement
     envVars:
       - key: GROQ_API_KEY
         sync: false
@@ -13,3 +15,5 @@ services:
         value: llama-3.3-70b-versatile
       - key: CHROMA_PERSIST_DIRECTORY
         value: /opt/render/project/src/chroma_db
+      - key: PORT
+        value: 10000

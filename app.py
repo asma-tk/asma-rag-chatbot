@@ -371,9 +371,12 @@ app.mount("/static", StaticFiles(directory="."), name="static")
 
 if __name__ == "__main__":
     import uvicorn
+    # Utiliser le port fourni par Render (variable d'environnement PORT)
+    # ou 8000 par défaut pour le développement local
+    port = int(os.getenv("PORT", 8000))
     uvicorn.run(
         "app:app",
         host="0.0.0.0",
-        port=8000,
+        port=port,
         reload=True
     )
