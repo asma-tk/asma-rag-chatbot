@@ -71,6 +71,10 @@ async function sendMessage(message) {
         // Afficher l'indicateur de frappe
         showTypingIndicator(true);
         
+        // Créer un AbortController pour gérer le timeout (60 secondes pour le cold start)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000);
+        
         // Envoyer la requête à l'API
         const response = await fetch(`${API_URL}/chat`, {
             method: 'POST',
@@ -80,8 +84,11 @@ async function sendMessage(message) {
             body: JSON.stringify({
                 message: message,
                 conversation_history: conversationHistory
-            })
+            }),
+            signal: controller.signal
         });
+        
+        clearTimeout(timeoutId);
         
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
@@ -110,13 +117,22 @@ async function sendMessage(message) {
         console.error('Erreur lors de l\'envoi du message:', error);
         showTypingIndicator(false);
         
-        // Message d'erreur élégant
-        addMessage(
-            "Désolé, je rencontre un problème technique. 😔\n\n" +
-            "Veuillez réessayer dans quelques instants.\n\n" +
-            "Erreur: " + error.message,
-            false
-        );
+        // Message d'erreur adapté selon le type d'erreur
+        if (error.name === 'AbortError') {
+            addMessage(
+                "⏱️ Le serveur met plus de temps que prévu à répondre.\n\n" +
+                "Cela peut arriver lors du premier réveil du serveur (plan gratuit Render).\n\n" +
+                "Veuillez réessayer dans quelques instants.",
+                false
+            );
+        } else {
+            addMessage(
+                "Désolé, je rencontre un problème technique. 😔\n\n" +
+                "Le serveur est peut-être en train de se réveiller (cela peut prendre 30-60 secondes).\n\n" +
+                "Veuillez réessayer dans un instant.",
+                false
+            );
+        }
     }
 }
 
@@ -164,7 +180,9 @@ window.addEventListener('load', () => {
 // Vérifier le statut du serveur
 async function checkServerStatus() {
     try {
-        const response = await fetch(`${API_URL}/health`);
+        const response = await fetch(`${API_URL}/health`, {
+            signal: AbortSignal.timeout(5000) // Timeout de 5 secondes
+        });
         if (response.ok) {
             const data = await response.json();
             console.log('✅ Serveur connecté:', data);
@@ -175,25 +193,11 @@ async function checkServerStatus() {
             }
         }
     } catch (error) {
-        console.warn('⚠️ Serveur non disponible. Démarrez-le avec: python app.py');
-        
-        // Afficher un message d'avertissement dans le chat
-        setTimeout(() => {
-            addMessage(
-                "⚠️ Le serveur n'est pas démarré.\n\n" +
-                "Pour utiliser le chatbot, veuillez:\n" +
-                "1. Ouvrir un terminal\n" +
-                "2. Activer l'environnement virtuel: source venv/bin/activate\n" +
-                "3. Lancer le serveur: python app.py\n\n" +
-                "Le chatbot sera alors opérationnel ! 🚀",
-                false
-            );
-        }, 1000);
+        // Serveur en veille (normal pour Render free tier)
+        console.warn('⚠️ Serveur en veille, il se réveillera à la première requête');
+        // Ne PAS afficher de message d'erreur dans le chat
     }
 }
-
-// Vérifier périodiquement la connexion
-setInterval(checkServerStatus, 30000); // Toutes les 30 secondes
 
 // Animation au survol des messages
 chatMessages.addEventListener('mouseover', (e) => {
