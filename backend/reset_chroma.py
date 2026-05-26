@@ -14,16 +14,16 @@ def reset_chromadb():
     try:
         if os.path.exists(CHROMA_PERSIST_DIRECTORY):
             shutil.rmtree(CHROMA_PERSIST_DIRECTORY)
-            logger.info(f"✅ Base de données ChromaDB supprimée: {CHROMA_PERSIST_DIRECTORY}")
+            logger.info(f"Base de données ChromaDB supprimée: {CHROMA_PERSIST_DIRECTORY}")
             logger.info("Au prochain démarrage, les données seront réindexées depuis data.txt")
         else:
-            logger.info(f"ℹ️ Aucune base de données trouvée à {CHROMA_PERSIST_DIRECTORY}")
+            logger.info(f" Aucune base de données trouvée à {CHROMA_PERSIST_DIRECTORY}")
     except Exception as e:
-        logger.error(f"❌ Erreur lors de la suppression: {e}")
+        logger.error(f" Erreur lors de la suppression: {e}")
 
 if __name__ == "__main__":
-    logger.info("🔄 Réinitialisation de la base de données ChromaDB...")
+    logger.info(" Réinitialisation de la base de données ChromaDB...")
     reset_chromadb()
-    logger.info("✅ Terminé! Redémarrez l'application pour réindexer les données.")
+    logger.info(" Terminé! Redémarrez l'application pour réindexer les données.")
 
 # Made with Bob
