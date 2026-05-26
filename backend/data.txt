@@ -7,7 +7,7 @@ Localisation actuelle : Toulouse, France
 Email : asmataberkokt@gmail.com
 Téléphone : 06 02 95 42 58
 LinkedIn : /asma-t-5b71b6217
-GitLab : https://gitlab.com/asma1315
+GitHub : https://github.com/asma-tk
 Formation en cours : Développement en Intelligence Artificielle, Microsoft by Simplon (depuis décembre 2025, certification prévue décembre 2026)
 Diplôme obtenu : Master en Génie des Procédés, Université Saad Dahleb (2019)
 
@@ -17,7 +17,7 @@ Pour me contacter :
 Email professionnel : asmataberkokt@gmail.com
 Téléphone : 06 02 95 42 58 (France)
 LinkedIn : linkedin.com/in/asma-t-5b71b6217
-GitLab : https://gitlab.com/asma-tk
+GitHub : https://github.com/asma-tk
 
 N'hésitez pas à me contacter pour :
 - Opportunités de stage en machine learning (juin-novembre 2026)
