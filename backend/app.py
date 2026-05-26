@@ -296,23 +296,30 @@ Informations sur Asma Taberkokt :
 @app.on_event("startup")
 async def startup_event():
     """Initialisation au démarrage de l'application"""
-    try:
-        logger.info("🚀 Démarrage de l'application...")
-        
-        initialize_embeddings()
-        initialize_chromadb()
-        
-        if not test_groq_connection():
-            logger.warning("⚠️ Ollama n'est pas disponible. Le chatbot ne fonctionnera pas correctement.")
-        
-        chunks = load_and_process_data()
-        index_data(chunks)
-        
-        logger.info("✅ Application prête!")
-        
-    except Exception as e:
-        logger.error(f"❌ Erreur lors de l'initialisation: {e}")
-        raise
+    import asyncio
+    
+    async def initialize_in_background():
+        """Initialise les données en arrière-plan"""
+        try:
+            logger.info("🚀 Démarrage de l'application...")
+            
+            initialize_embeddings()
+            initialize_chromadb()
+            
+            if not test_groq_connection():
+                logger.warning("⚠️ Groq n'est pas disponible. Le chatbot ne fonctionnera pas correctement.")
+            
+            chunks = load_and_process_data()
+            index_data(chunks)
+            
+            logger.info("✅ Application prête!")
+            
+        except Exception as e:
+            logger.error(f"❌ Erreur lors de l'initialisation: {e}")
+    
+    # Lancer l'initialisation en arrière-plan pour ne pas bloquer le démarrage du serveur
+    asyncio.create_task(initialize_in_background())
+    logger.info("🚀 Serveur démarré, initialisation en cours en arrière-plan...")
 
 @app.get("/")
 async def root():
