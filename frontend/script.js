@@ -276,13 +276,13 @@ userInput.addEventListener('input', (e) => {
 // Log de démarrage
 console.log(`
 ╔═══════════════════════════════════════════╗
-║   🤖 Chatbot Personnel - Asma Taberkokt   ║
+║    Chatbot Personnel - Asma Taberkokt   ║
 ║                                           ║
 ║   Système RAG avec:                       ║
 ║   • FastAPI                               ║
 ║   • ChromaDB                              ║
 ║   • LangChain                             ║
-║   • Claude AI                             ║
+║   • Groq API                              ║
 ║                                           ║
 ║   Commandes spéciales:                    ║
 ║   • /clear - Effacer l'historique        ║
@@ -290,4 +290,3 @@ console.log(`
 ╚═══════════════════════════════════════════╝
 `);
 
-// Made with Bob
