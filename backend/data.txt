@@ -87,6 +87,124 @@ Logiciels : Aspen HYSYS, AutoCAD, Microsoft Project, Excel (Tableaux croisés dy
 Stage de fin d'études - Contrôle qualité membranes OI
 SNC LAVALIN
 Analyse de conformité et détection d'anomalies sur membranes d'osmose inverse, tests rigoureux et validation des résultats, travail selon des procédures industrielles strictes.
+=== STAGE ET ASSURANCE MALADIE ===
+
+Caisse d'assurance maladie à contacter en cas d'accident (lieu de domicile du stagiaire sauf exception) :
+À définir selon le lieu de domicile du stagiaire
+
+=== COMPÉTENCES À ACQUÉRIR OU À DÉVELOPPER ===
+
+Référentiel de certification - Développeur en Intelligence Artificielle
+
+Bloc de compétences 1 : Réaliser la collecte, le stockage et la mise à disposition des données d'un projet en intelligence artificielle
+
+C1. Automatiser l'extraction de données depuis un service web, une page web (scraping), un fichier de données, une base de données et un système big data en programmant le script adapté afin de pérenniser la collecte des données nécessaires au projet.
+
+C2. Développer des requêtes de type SQL d'extraction des données depuis un système de gestion de base de données et un système big data en appliquant le langage de requête propre au système afin de préparer la collecte des données nécessaires au projet.
+
+C3. Développer des règles d'agrégation de données issues de différentes sources en programmant, sous forme de script, la suppression des entrées corrompues et en programmant l'homogénéisation des formats des données afin de préparer le stockage du jeu de données final.
+
+C4. Créer une base de données dans le respect du RGPD en élaborant les modèles conceptuels et physiques des données à partir des données préparées et en programmant leur import afin de stocker le jeu de données du projet.
+
+C5. Développer une API mettant à disposition le jeu de données en utilisant l'architecture REST afin de permettre l'exploitation du jeu de données par les autres composants du projet.
+
+Bloc de compétences 2 : Intégrer des modèles et des services d'intelligence artificielle
+
+C6. Organiser et réaliser une veille technique et réglementaire en animant le travail collectif de sélection des sources, de collecte, de traitement et de partage des informations afin de formuler des recommandations pour le projet toujours en phase avec l'état de l'art.
+
+C7. Identifier des services d'intelligence artificielle préexistants à partir de l'expression de besoin en fonctionnalités d'intelligence artificielle, en réalisant un benchmark de services existants et en analysant leurs caractéristiques pour formaliser une ou plusieurs recommandations de services adaptés au besoin.
+
+C8. Paramétrer un service d'intelligence artificielle en suivant sa documentation technique et en respectant les spécifications du projet, afin de permettre l'intégration des connecteurs du service dans le système d'information.
+
+C9. Développer une API exposant un modèle d'intelligence artificielle en utilisant l'architecture REST pour permettre l'interaction entre le modèle et les autres composants du projet.
+
+C10. Intégrer l'API d'un modèle ou d'un service d'intelligence artificielle dans une application, en respectant les spécifications du projet et les normes d'accessibilité en vigueur, à l'aide de la documentation technique de l'API, afin de créer les fonctionnalités d'intelligence artificielle de l'application.
+
+C11. Monitorer un modèle d'intelligence artificielle à partir des métriques courantes et spécifiques au projet, en intégrant les outils de collecte, d'alerte et de restitution des données du monitorage pour permettre l'amélioration du modèle de façon itérative.
+
+C12. Programmer les tests automatisés d'un modèle d'intelligence artificielle en définissant les règles de validation des jeux de données, des étapes de préparation des données, d'entraînement, d'évaluation et de validation du modèle pour permettre son intégration en continu et garantir un niveau de qualité élevé.
+
+C13. Créer une chaîne de livraison continue d'un modèle d'intelligence artificielle en installant les outils et en appliquant les configurations souhaitées, dans le respect du cadre imposé par le projet et dans une approche MLOps, pour automatiser les étapes de validation, de test, de packaging et de déploiement du modèle.
+
+Bloc de compétences 3 : Réaliser une application intégrant un service d'intelligence artificielle
+
+C14. Analyser le besoin d'application d'un commanditaire intégrant un service d'intelligence artificielle, en rédigeant les spécifications fonctionnelles et en le modélisant, dans le respect des standards d'utilisabilité et d'accessibilité, afin d'établir avec précision les objectifs de développement correspondant au besoin et à la faisabilité technique.
+
+C15. Concevoir le cadre technique d'une application intégrant un service d'intelligence artificielle, à partir de l'analyse du besoin, en spécifiant l'architecture technique et applicative et en préconisant les outils et méthodes de développement, pour permettre le développement du projet.
+
+C16. Coordonner la réalisation technique d'une application d'intelligence artificielle en s'intégrant dans une conduite agile de projet et un contexte MLOps et en facilitant les temps de collaboration dans le but d'atteindre les objectifs de production et de qualité.
+
+C17. Développer les composants techniques et les interfaces d'une application en utilisant les outils et langages de programmation adaptés et en respectant les spécifications fonctionnelles et techniques, les standards et normes d'accessibilité, de sécurité et de gestion des données en vigueur dans le but de répondre aux besoins fonctionnels identifiés.
+
+C18. Automatiser les phases de tests du code source lors du versionnement des sources à l'aide d'un outil d'intégration continue de manière à garantir la qualité technique des réalisations.
+
+C19. Créer un processus de livraison continue d'une application en s'appuyant sur une chaîne d'intégration continue et en paramétrant les outils d'automatisation et les environnements de test afin de permettre une restitution optimale de l'application.
+
+C20. Surveiller une application d'intelligence artificielle, en mobilisant des techniques de monitorage et de journalisation, dans le respect des normes de gestion des données personnelles en vigueur, afin d'alimenter la feedback loop dans une approche MLOps, et de permettre la détection automatique d'incidents.
+
+C21. Résoudre les incidents techniques en apportant les modifications nécessaires au code de l'application et en documentant les solutions pour en garantir le fonctionnement opérationnel.
+
+=== DATES DU STAGE ===
+
+Période de stage : Du 22 juin 2026 au 19 novembre 2026
+Durée totale : 700 heures
+Jours de présence effective : 100 jours dans l'organisme d'accueil
+Durée hebdomadaire : 35 heures par semaine
+
+Date de regroupement au centre de formation : 10 septembre 2026
+
+=== COMPÉTENCES PROFESSIONNELLES PRINCIPALES ===
+
+RAG (Retrieval-Augmented Generation) :
+- Conception de pipelines RAG avec LangChain et bases vectorielles
+- Recherche sémantique via embeddings et optimisation du retrieval
+- Intégration de systèmes RAG dans des applications de production
+- Optimisation de la pertinence des réponses avec fine-tuning du retrieval
+
+Computer Vision :
+- Détection et classification d'images avec YOLO, ViT et Hugging Face
+- Développement de solutions d'analyse et surveillance automatisée
+- Traitement d'images en temps réel
+- Reconnaissance d'objets et segmentation sémantique
+
+Agentique :
+- Développement d'agents IA conversationnels sur mesure (JavaScript/Python)
+- Intégration d'outils, mémoire conversationnelle et automatisation d'actions
+- Création d'agents autonomes avec capacité de raisonnement
+- Orchestration multi-agents et coordination de tâches
+
+IA Générative :
+- Intégration et personnalisation de modèles LLM (GPT, Claude, Llama)
+- Génération de texte, images, documents et contenus multimodaux
+- Fine-tuning de modèles génératifs pour des cas d'usage spécifiques
+- Prompt engineering avancé et optimisation de la génération
+
+Développement :
+- Développement Python et automatisation de processus
+- Création d'APIs REST avec FastAPI et intégration IA
+- Architecture logicielle et design patterns
+- Tests automatisés et qualité du code
+
+Data :
+- Préparation, nettoyage et manipulation de données avec Pandas
+- Utilisation de bases vectorielles (FAISS, ChromaDB, Pinecone)
+- ETL et pipelines de données
+- Analyse exploratoire et visualisation de données
+
+MLOps & Cloud :
+- Conteneurisation avec Docker et orchestration
+- CI/CD avec GitLab CI et GitHub Actions
+- Bases en AWS, Azure et Kubernetes
+- Monitoring et logging de modèles en production
+- Déploiement continu et gestion de versions
+
+Soft Skills :
+- Autonomie et capacité à travailler de manière indépendante
+- Rigueur et esprit analytique dans la résolution de problèmes
+- Apprentissage rapide et adaptation aux nouvelles technologies
+- Travail en équipe et collaboration efficace
+- Communication claire et documentation technique
+
 
 === COMPÉTENCES TECHNIQUES IA & LLM ===
 
