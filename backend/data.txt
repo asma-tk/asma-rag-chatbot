@@ -3,6 +3,9 @@ ASMA TABERKOKT - PROFIL PERSONNEL
 === INFORMATIONS GÉNÉRALES ===
 
 Nom complet : Asma Taberkokt
+Âge : 30 ans
+Situation personnelle : Célibataire
+Signe astrologique : Scorpion ascendant Sagittaire
 Localisation actuelle : Toulouse, France
 Email : asmataberkokt@gmail.com
 Téléphone : 06 02 95 42 58
@@ -29,11 +32,37 @@ Je réponds généralement sous 24-48 heures.
 
 === PRÉSENTATION PERSONNELLE ===
 
-Je m'appelle Asma Taberkokt. Je suis développeuse IA en formation certifiante Microsoft by Simplon. Mon parcours académique initial m'a menée vers un master en génie des procédés, mais ma passion pour l'innovation technologique et mon désir d'avoir un impact positif sur la société m'ont naturellement orientée vers l'intelligence artificielle.
+Je m'appelle Asma Taberkokt, j'ai 30 ans et je suis célibataire. Je suis développeuse IA en formation certifiante Microsoft by Simplon. Mon parcours académique initial m'a menée vers un master en génie des procédés, mais ma passion pour l'innovation technologique et mon désir d'avoir un impact positif sur la société m'ont naturellement orientée vers l'intelligence artificielle.
 
 Je recherche un stage en machine learning de juin à novembre 2026 pour participer à des projets concrets impliquant la conception, l'entraînement et le déploiement de modèles IA.
 
 Cette transition représente pour moi bien plus qu'un simple changement de carrière : c'est l'accomplissement d'une véritable vocation. Chaque jour, je découvre de nouvelles possibilités offertes par l'intelligence artificielle, et cette exploration continue de nourrir ma motivation.
+
+=== PERSONNALITÉ ET ASTROLOGIE ===
+
+Signe astrologique : Scorpion ascendant Sagittaire
+
+Cette combinaison astrologique reflète bien ma personnalité :
+
+Traits Scorpion :
+- Intensité et passion : Je m'investis pleinement dans mes projets et mes apprentissages
+- Détermination : Une fois un objectif fixé, je ne lâche rien jusqu'à l'atteindre
+- Profondeur : J'aime comprendre les choses en profondeur, aller au-delà de la surface
+- Transformation : Ma reconversion professionnelle illustre ma capacité à me réinventer
+- Intuition : Je fais confiance à mon instinct dans mes décisions
+- Loyauté : Fidèle à mes valeurs et aux personnes qui comptent pour moi
+- Résilience : Capable de surmonter les obstacles et de rebondir
+
+Traits Sagittaire (ascendant) :
+- Optimisme : Je garde toujours une vision positive de l'avenir
+- Soif d'aventure : Mon amour pour les voyages et la découverte de nouvelles cultures
+- Curiosité intellectuelle : Toujours en quête de nouvelles connaissances
+- Franchise : J'apprécie la communication directe et honnête
+- Indépendance : J'aime avoir ma liberté et mon autonomie
+- Vision globale : Je pense grand et vise haut (Silicon Valley, entreprise mondiale)
+- Philosophie : Je réfléchis au sens profond des choses
+
+Cette combinaison Scorpion-Sagittaire crée un mélange unique d'intensité et d'optimisme, de profondeur et d'ouverture d'esprit, qui guide ma façon d'aborder l'intelligence artificielle et la vie en général.
 
 === FORMATION ET ÉDUCATION ===
 
@@ -62,22 +91,84 @@ Analyse de conformité et détection d'anomalies sur membranes d'osmose inverse,
 === COMPÉTENCES TECHNIQUES IA & LLM ===
 
 Systèmes IA et LLM :
-- Intégration de LLM et conception de pipelines RAG
-- Systèmes de vector embeddings et retrieval
-- Deep learning avec Transformers
-- PyTorch / TensorFlow (en formation)
+- Intégration de Large Language Models (LLM) dans des applications
+- Conception et implémentation de pipelines RAG (Retrieval-Augmented Generation)
+- Systèmes de vector embeddings et retrieval avec ChromaDB et Pinecone
+- Fine-tuning de modèles de langage
+- Prompt engineering et optimisation
+- Deep learning avec architecture Transformers
+- Utilisation de frameworks : LangChain, LlamaIndex
+- APIs LLM : OpenAI, Groq, Anthropic Claude
+- PyTorch / TensorFlow (en formation continue)
 
-Machine Learning :
-- Conception, entraînement et évaluation de modèles ML
-- Classification d'images (CNN)
-- Collecte et prétraitement des données
-- Développement et monitoring d'API REST
+Machine Learning & Deep Learning :
+- Conception, entraînement et évaluation de modèles ML supervisés et non supervisés
+- Classification d'images avec CNN (Convolutional Neural Networks)
+- Réseaux de neurones récurrents (RNN, LSTM) pour séquences
+- Transfer learning et fine-tuning de modèles pré-entraînés
+- Collecte, nettoyage et prétraitement des données
+- Feature engineering et sélection de variables
+- Validation croisée et optimisation d'hyperparamètres
+- Métriques d'évaluation : accuracy, precision, recall, F1-score, AUC-ROC
+- Gestion du déséquilibre de classes
+- Régularisation (L1, L2, Dropout)
 
-Outils et collaboration :
-- Python : scripting, automatisation, analyse
-- GitLab / GitHub : contrôle de version
-- Figma : prototypage UI/UX
-- Agile : Trello, collaboration en équipe
+Traitement du Langage Naturel (NLP) :
+- Tokenization et preprocessing de texte
+- Word embeddings : Word2Vec, GloVe, FastText
+- Transformers et attention mechanisms
+- Named Entity Recognition (NER)
+- Sentiment analysis
+- Text classification et clustering
+- Question answering systems
+- Chatbots et agents conversationnels
+
+Vision par Ordinateur :
+- Détection et classification d'objets
+- Segmentation d'images
+- Reconnaissance faciale
+- Augmentation de données (data augmentation)
+- Architectures CNN : ResNet, VGG, EfficientNet
+- Transfer learning avec modèles pré-entraînés (ImageNet)
+
+MLOps et Déploiement :
+- Développement et monitoring d'API REST avec FastAPI et Flask
+- Containerisation avec Docker
+- Déploiement sur cloud : Render, Vercel, Netlify
+- CI/CD avec GitHub Actions
+- Versioning de modèles
+- Monitoring de performance en production
+- A/B testing de modèles
+
+Outils et Frameworks Python :
+- Python : scripting, automatisation, analyse de données
+- NumPy : calcul numérique et manipulation de matrices
+- Pandas : manipulation et analyse de données tabulaires
+- Scikit-learn : algorithmes ML classiques
+- Matplotlib, Seaborn : visualisation de données
+- Jupyter Notebooks : prototypage et expérimentation
+- Poetry, pip : gestion de dépendances
+
+Bases de Données :
+- Bases de données vectorielles : ChromaDB, Pinecone, Weaviate
+- SQL : requêtes, jointures, agrégations
+- NoSQL : MongoDB (bases de connaissances)
+- Gestion de grandes quantités de données
+
+Outils de Collaboration et Versioning :
+- Git : contrôle de version, branches, merge, rebase
+- GitLab / GitHub : collaboration, pull requests, code review
+- Figma : prototypage UI/UX et design d'interfaces
+- Méthodologie Agile : Trello, Jira, sprints, stand-ups
+- Documentation : Markdown, Sphinx
+
+Développement Web :
+- FastAPI : création d'APIs REST performantes
+- Flask : développement web Python
+- HTML/CSS/JavaScript : bases du frontend
+- CORS et sécurité des APIs
+- Authentification et autorisation
+- WebSockets pour applications temps réel
 
 === COMPÉTENCES TECHNIQUES INGÉNIERIE ===
 
@@ -179,22 +270,56 @@ Ma philosophie d'apprentissage repose sur la pratique intensive, l'utilisation d
 === PASSIONS ET LOISIRS ===
 
 Sports et activités physiques :
-- Tir à l'arc : une discipline qui demande concentration, précision et maîtrise de soi
-- Natation : un sport complet qui me permet de me ressourcer
-- Randonnée (hiking)
-- Sport en général : je maintiens une activité physique régulière
+
+Tir à l'arc : Une discipline qui demande concentration, précision et maîtrise de soi. Le tir à l'arc m'apprend la patience et le contrôle, des qualités essentielles aussi bien dans le sport que dans le développement logiciel. Chaque tir est une leçon de focus et de persévérance.
+
+Natation : Un sport complet qui me permet de me ressourcer et de maintenir ma forme physique. L'eau a un effet apaisant et me permet de me déconnecter pour mieux me reconnecter à moi-même.
+
+Randonnée (Hiking) : La randonnée est bien plus qu'une simple activité physique pour moi. C'est un moment de connexion avec la nature, de dépassement de soi et de méditation en mouvement. J'aime particulièrement :
+- Les sentiers de montagne qui offrent des vues panoramiques
+- La sensation d'accomplissement après avoir atteint un sommet
+- Le calme et la sérénité qu'apporte la marche en pleine nature
+- L'opportunité de déconnecter du monde numérique
+- Les randonnées en groupe qui renforcent les liens sociaux
+- La découverte de nouveaux paysages et écosystèmes
+La randonnée m'enseigne la résilience : chaque montée difficile a sa récompense, tout comme dans l'apprentissage de l'IA.
+
+Sport en général : Je maintiens une activité physique régulière car je crois fermement à l'équilibre corps-esprit. Un corps sain favorise un esprit clair et créatif.
 
 Activités créatives :
-- Dessin hyperréaliste : j'aime exprimer ma créativité à travers le dessin
-- Peinture : une passion qui me permet de me détendre
+
+Dessin hyperréaliste : J'aime exprimer ma créativité à travers le dessin hyperréaliste. Cette pratique développe mon sens du détail et ma patience, deux qualités essentielles en programmation. Chaque trait compte, comme chaque ligne de code.
+
+Peinture : Une passion qui me permet de me détendre et d'exprimer mes émotions de manière visuelle. La peinture est ma forme de méditation créative.
 
 Développement personnel :
-- Méditation : une pratique quotidienne qui m'aide à rester centrée
-- Voyages en Asie : j'adore découvrir de nouveaux endroits et cultures
+
+Méditation : Une pratique quotidienne qui m'aide à rester centrée, à gérer le stress et à maintenir ma clarté mentale. La méditation améliore ma concentration et ma capacité à résoudre des problèmes complexes.
+
+Voyages en Asie : J'adore découvrir de nouveaux endroits et cultures asiatiques. Ces voyages élargissent ma perspective du monde et nourrissent ma curiosité intellectuelle.
 
 Culture et divertissement :
-- Animés préférés : Demon Slayer (Kimetsu no Yaiba), Tokyo Ghoul
-- Séries policières : j'aime les intrigues complexes et la résolution de mystères
+
+Animés et Mangas : Je suis une grande fan d'animés japonais. Mes préférés incluent :
+- Demon Slayer (Kimetsu no Yaiba) : J'admire la détermination de Tanjiro et les magnifiques animations des combats. L'histoire explore des thèmes profonds comme la famille, le sacrifice et la persévérance.
+- Tokyo Ghoul : Une série sombre qui pose des questions philosophiques sur l'identité, l'humanité et la survie. J'apprécie la complexité psychologique des personnages.
+- Attack on Titan (Shingeki no Kyojin) : Une œuvre épique avec une intrigue complexe et des rebondissements captivants
+- Death Note : Un thriller psychologique brillant qui explore la moralité et le pouvoir
+- Fullmetal Alchemist Brotherhood : Une histoire profonde sur le sacrifice et la rédemption
+- My Hero Academia : Inspirant avec ses thèmes de dépassement de soi
+- Steins;Gate : Science-fiction fascinante sur le voyage dans le temps
+
+Ce que j'aime dans les animés : les histoires profondes, le développement des personnages, les animations de qualité, les thèmes philosophiques et les émotions authentiques.
+
+K-dramas (Séries coréennes) : Je suis également passionnée par les K-dramas qui offrent des histoires captivantes et émouvantes :
+- Séries romantiques : J'apprécie les histoires d'amour bien écrites avec du développement de personnages
+- Dramas historiques : Fascinée par l'histoire et la culture coréenne
+- Thrillers coréens : Les K-dramas policiers et de suspense sont particulièrement bien réalisés
+- Dramas médicaux : Combinant émotion et expertise professionnelle
+
+Ce que j'aime dans les K-dramas : la qualité de production, les acteurs talentueux, les OST (bandes originales) magnifiques, les histoires qui mélangent humour et émotion, et la représentation de valeurs familiales fortes.
+
+Séries policières et thrillers : J'aime les intrigues complexes et la résolution de mystères. Ces séries stimulent mon esprit analytique et ma capacité de déduction, des compétences utiles en programmation et en résolution de problèmes.
 
 === VISION ET RÊVES ===
 
