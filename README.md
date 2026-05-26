@@ -2,6 +2,10 @@
 
 Chatbot intelligent utilisant RAG (Retrieval-Augmented Generation) avec FastAPI, ChromaDB et Groq API.
 
+##  Démo
+
+![Chatbot Demo](chatbot.gif)
+
 ## 📁 Structure du Projet
 
 ```
@@ -24,7 +28,7 @@ chatbot/
 └── README.md
 ```
 
-## 🚀 Déploiement
+##  Déploiement
 
 ### Frontend (Netlify)
 1. Connectez le dossier `frontend/` à Netlify
@@ -36,17 +40,17 @@ chatbot/
 2. Render utilisera `render.yaml` et `Dockerfile`
 3. Le backend sera déployé en ~10-15 minutes
 
-## 🔗 URLs
+##  URLs
 
 - **Frontend** : https://votre-site.netlify.app
 - **Backend** : https://asma-rag-chatbot-2.onrender.com
 
-## 📚 Documentation
+##  Documentation
 
 - Frontend : Voir `frontend/netlify.toml`
 - Backend : Voir `backend/RENDER_DEPLOYMENT.md`
 
-## 🛠️ Technologies
+##  Technologies
 
 - **Frontend** : HTML, CSS, JavaScript
 - **Backend** : FastAPI, ChromaDB, Groq API, Docker
