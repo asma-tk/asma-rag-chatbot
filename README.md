@@ -1,4 +1,4 @@
-# 🤖 Chatbot RAG - Asma Taberkokt
+#  Chatbot RAG - Asma Taberkokt
 
 Chatbot intelligent utilisant RAG (Retrieval-Augmented Generation) avec FastAPI, ChromaDB et Groq API.
 
