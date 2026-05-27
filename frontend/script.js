@@ -185,7 +185,7 @@ async function checkServerStatus() {
         });
         if (response.ok) {
             const data = await response.json();
-            console.log('✅ Serveur connecté:', data);
+            console.log(' Serveur connecté:', data);
             
             // Afficher un message de bienvenue personnalisé
             if (data.chroma_documents > 0) {
@@ -257,7 +257,7 @@ userInput.addEventListener('input', (e) => {
             .then(res => res.json())
             .then(data => {
                 addMessage(
-                    `📊 Statistiques du système:\n\n` +
+                    ` Statistiques du système:\n\n` +
                     `• Documents indexés: ${data.total_documents}\n` +
                     `• Modèle IA: ${data.model}\n` +
                     `• Modèle d'embeddings: ${data.embedding_model}\n` +

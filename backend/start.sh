@@ -3,7 +3,7 @@
 # Script de démarrage du chatbot Asma Taberkokt
 # Usage: ./start.sh
 
-echo "🚀Démarrage du chatbot Asma Taberkokt..."
+echo "Démarrage du chatbot Asma Taberkokt..."
 echo ""
 
 # Vérifier si le venv existe
@@ -29,13 +29,13 @@ if ! curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
         exit 1
     fi
 else
-    echo "✅ Ollama est en cours d'exécution"
+    echo "Ollama est en cours d'exécution"
 fi
 
 # Vérifier si le modèle phi3 est installé
 echo " Vérification du modèle phi3..."
 if ! ollama list | grep -q "phi3"; then
-    echo "⚠️  Le modèle phi3 n'est pas installé."
+    echo " Le modèle phi3 n'est pas installé."
     echo "Installez-le avec: ollama pull phi3"
     echo ""
     read -p "Voulez-vous l'installer maintenant ? (y/n) " -n 1 -r
@@ -51,8 +51,8 @@ fi
 
 # Démarrer l'application
 echo ""
-echo "🎯 Démarrage du serveur FastAPI..."
-echo "📍 URL: http://localhost:8000"
+echo " Démarrage du serveur FastAPI..."
+echo " URL: http://localhost:8000"
 echo ""
 echo "Appuyez sur Ctrl+C pour arrêter le serveur"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

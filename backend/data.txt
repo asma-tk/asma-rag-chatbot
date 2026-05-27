@@ -144,7 +144,7 @@ C20. Surveiller une application d'intelligence artificielle, en mobilisant des t
 
 C21. Résoudre les incidents techniques en apportant les modifications nécessaires au code de l'application et en documentant les solutions pour en garantir le fonctionnement opérationnel.
 
-=== DATES DU STAGE ===
+=== DATES ET CONDITIONS DU STAGE (Convention PAE Simplon) ===
 
 Période de stage : Du 22 juin 2026 au 19 novembre 2026
 Durée totale : 700 heures
@@ -152,6 +152,44 @@ Jours de présence effective : 100 jours dans l'organisme d'accueil
 Durée hebdomadaire : 35 heures par semaine
 
 Date de regroupement au centre de formation : 10 septembre 2026
+
+Intitulé officiel de la formation : Développeur en Intelligence Artificielle (917h en formation + 700h en entreprise)
+
+Type de convention : Convention de Période d'Application en Entreprise (PAE) — stage tripartite entre Simplon (organisme de formation), l'organisme d'accueil et la stagiaire.
+
+=== GRATIFICATION DU STAGE ===
+
+Le stage d'Asma relève de la formation professionnelle continue (et non du Code de l'éducation).
+Par conséquent, aucune gratification minimale n'est légalement obligatoire, quelle que soit la durée du stage.
+L'entreprise d'accueil reste libre de verser, à titre facultatif, une gratification ou des avantages.
+La stagiaire bénéficie cependant des protections et droits des salariés (non-discrimination, harcèlement, etc.) conformément aux articles L.1121-1, L.1152-1 et L.1153-1 du Code du travail.
+
+=== CONTACTS SIMPLON - RÉFÉRENTS DU STAGE ===
+
+Organisme de formation : Simplon
+Adresse de formation : La Cité, 55 avenue Louis Bréguet, 31400 Toulouse
+Site : www.simplon.co
+Directrice régionale des opérations : Cécile COUDERC — ccouderc@simplon.co
+
+Chef de Projet Formation : Nicolas PIQUET
+Téléphone : 06 72 18 49 98
+Email : npiquet@simplon.co
+
+Formateur référent : Maxime MULLER
+Email : mmuller@simplon.co
+
+=== MODALITÉS ADMINISTRATIVES DU STAGE ===
+
+Congés : Le 10 septembre 2026 est une journée de regroupement obligatoire au centre de formation Simplon.
+Prolongation possible : Un avenant peut être établi en cas de prolongation, dans la limite de 6 mois au total.
+Interruption : Toute interruption doit être signalée à toutes les parties et au formateur référent.
+Rapport de stage : La stagiaire devra rédiger un rapport de stage à l'issue de la PAE.
+Attestation : L'organisme d'accueil délivre une attestation de stage mentionnant la durée effective à la fin du stage.
+
+=== PROTECTION SOCIALE PENDANT LE STAGE ===
+
+La stagiaire reste affiliée à son régime de Sécurité sociale antérieur pendant toute la durée du stage.
+En cas d'accident du travail, l'organisme d'accueil doit déclarer l'accident à la Caisse Primaire d'Assurance Maladie dans les 48 heures, en mentionnant Simplon comme employeur.
 
 === COMPÉTENCES PROFESSIONNELLES PRINCIPALES ===
 
