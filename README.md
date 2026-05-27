@@ -6,16 +6,15 @@ Chatbot intelligent utilisant RAG (Retrieval-Augmented Generation) avec FastAPI,
 
 ![Chatbot Demo](chatbot.gif)
 
-## 📁 Structure du Projet
+##  Structure du Projet
 
 ```
 chatbot/
-├── frontend/          # Frontend statique (Netlify)
+├── frontend/          # Frontend statique (Vercel)
 │   ├── index.html
 │   ├── style.css
 │   ├── script.js
-│   ├── robot.png
-│   └── netlify.toml
+│   └── robot.png
 │
 ├── backend/           # Backend Python (Render)
 │   ├── app.py
@@ -30,9 +29,9 @@ chatbot/
 
 ##  Déploiement
 
-### Frontend (Netlify)
-1. Connectez le dossier `frontend/` à Netlify
-2. Netlify détectera automatiquement `netlify.toml`
+### Frontend (Vercel)
+1. Connectez le dossier `frontend/` à Vercel
+2. Vercel détectera automatiquement la configuration via `vercel.json`
 3. Le site sera déployé en ~30 secondes
 
 ### Backend (Render)
@@ -42,16 +41,16 @@ chatbot/
 
 ##  URLs
 
-- **Frontend** : https://votre-site.netlify.app
+- **Frontend** : https://votre-site.vercel.app
 - **Backend** : https://asma-rag-chatbot-2.onrender.com
 
 ##  Documentation
 
-- Frontend : Voir `frontend/netlify.toml`
-- Backend : Voir `backend/RENDER_DEPLOYMENT.md`
+- Frontend : Voir `vercel.json`
+- Backend : Voir `backend/render.yaml` et `backend/Dockerfile`
 
 ##  Technologies
 
 - **Frontend** : HTML, CSS, JavaScript
 - **Backend** : FastAPI, ChromaDB, Groq API, Docker
-- **Hosting** : Netlify (frontend) + Render (backend)
+- **Hosting** : Vercel (frontend) + Render (backend)
