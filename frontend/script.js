@@ -60,20 +60,45 @@ function showTypingIndicator(show = true) {
 }
 
 // Fonction pour envoyer un message à l'API
-async function sendMessage(message) {
+async function sendMessage(message, isRetry = false) {
     try {
-        // Ajouter le message de l'utilisateur à l'historique
-        conversationHistory.push({
-            role: 'user',
-            content: message
-        });
+        // Ajouter le message de l'utilisateur à l'historique (seulement si ce n'est pas un retry)
+        if (!isRetry) {
+            conversationHistory.push({
+                role: 'user',
+                content: message
+            });
+        }
         
         // Afficher l'indicateur de frappe
         showTypingIndicator(true);
         
-        // Créer un AbortController pour gérer le timeout (60 secondes pour le cold start)
+        // Afficher un message d'attente après 5 secondes
+        const waitingMessageTimeout = setTimeout(() => {
+            const existingWaitMsg = document.querySelector('.waiting-message');
+            if (!existingWaitMsg) {
+                const waitMsg = document.createElement('div');
+                waitMsg.className = 'message bot-message waiting-message';
+                waitMsg.innerHTML = `
+                    <div class="message-avatar"><img src="robot.png" alt="Robot" class="robot-avatar"></div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            ⏳ Le serveur se réveille (plan gratuit Render)...<br>
+                            Cela peut prendre 30 à 60 secondes. Merci de patienter ! 😊
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(waitMsg);
+                chatMessages.scrollTo({
+                    top: chatMessages.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+        }, 5000);
+        
+        // Créer un AbortController pour gérer le timeout (90 secondes pour le cold start Render)
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 60000);
+        const timeoutId = setTimeout(() => controller.abort(), 90000);
         
         // Envoyer la requête à l'API
         const response = await fetch(`${API_URL}/chat`, {
@@ -89,6 +114,13 @@ async function sendMessage(message) {
         });
         
         clearTimeout(timeoutId);
+        clearTimeout(waitingMessageTimeout);
+        
+        // Supprimer le message d'attente s'il existe
+        const waitingMsg = document.querySelector('.waiting-message');
+        if (waitingMsg) {
+            waitingMsg.remove();
+        }
         
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
@@ -117,22 +149,59 @@ async function sendMessage(message) {
         console.error('Erreur lors de l\'envoi du message:', error);
         showTypingIndicator(false);
         
+        // Supprimer le message d'attente s'il existe
+        const waitingMsg = document.querySelector('.waiting-message');
+        if (waitingMsg) {
+            waitingMsg.remove();
+        }
+        
         // Message d'erreur adapté selon le type d'erreur
         if (error.name === 'AbortError') {
-            addMessage(
-                "⏱️ Le serveur met plus de temps que prévu à répondre.\n\n" +
-                "Cela peut arriver lors du premier réveil du serveur (plan gratuit Render).\n\n" +
-                "Veuillez réessayer dans quelques instants.",
-                false
-            );
+            // Proposer un retry automatique
+            const retryMsg = document.createElement('div');
+            retryMsg.className = 'message bot-message error-message';
+            retryMsg.innerHTML = `
+                <div class="message-avatar"><img src="robot.png" alt="Robot" class="robot-avatar"></div>
+                <div class="message-content">
+                    <div class="message-text">
+                        ⏱️ Le serveur met plus de temps que prévu à répondre.<br><br>
+                        Cela arrive lors du premier réveil (plan gratuit Render).<br><br>
+                        <button class="retry-button" onclick="retryLastMessage()">🔄 Réessayer maintenant</button>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(retryMsg);
+            chatMessages.scrollTo({
+                top: chatMessages.scrollHeight,
+                behavior: 'smooth'
+            });
         } else {
             addMessage(
                 "Désolé, je rencontre un problème technique. 😔\n\n" +
-                "Le serveur est peut-être en train de se réveiller (cela peut prendre 30-60 secondes).\n\n" +
+                "Le serveur est peut-être en train de se réveiller (30-90 secondes).\n\n" +
                 "Veuillez réessayer dans un instant.",
                 false
             );
         }
+    }
+}
+
+// Fonction pour réessayer le dernier message
+function retryLastMessage() {
+    // Supprimer le message d'erreur
+    const errorMsg = document.querySelector('.error-message');
+    if (errorMsg) {
+        errorMsg.remove();
+    }
+    
+    // Récupérer le dernier message utilisateur
+    const lastUserMessage = conversationHistory
+        .slice()
+        .reverse()
+        .find(msg => msg.role === 'user');
+    
+    if (lastUserMessage) {
+        sendMessage(lastUserMessage.content, true);
     }
 }
 

@@ -444,3 +444,74 @@ body {
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
 }
+
+/* Waiting and error messages */
+.waiting-message .message-text,
+.error-message .message-text {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFF3D6 100%);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: var(--text-dark);
+}
+
+.error-message .message-text {
+    background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D6 100%);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+/* Retry button */
+.retry-button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(155, 89, 182, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.retry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(155, 89, 182, 0.35);
+}
+
+.retry-button:active {
+    transform: scale(0.96);
+}
+
+/* Typing bubbles animation */
+.typing-bubbles {
+    display: flex;
+    gap: 5px;
+    padding: 14px 18px;
+    background: white;
+    border-radius: 18px;
+    border-bottom-left-radius: 5px;
+    width: fit-content;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.typing-bubbles span {
+    width: 7px;
+    height: 7px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: bounce 1.4s infinite;
+}
+
+.typing-bubbles span:nth-child(2) { animation-delay: 0.2s; }
+.typing-bubbles span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Hide class */
+.d-none {
+    display: none !important;
+}
