@@ -40,8 +40,13 @@ jobs:
           # Deliberately never fails the job: a scheduled workflow that goes red
           # would email on every run while the service is down. The status is
           # written to the run summary instead, so the Actions tab shows history.
+          #
+          # Single attempt, 90s cap. No --retry: a cold Render boot takes ~50s so
+          # 90s is enough, and stacked retries once blew past timeout-minutes
+          # below, which cancelled the job and defeated the never-fail design.
+          # If a ping does fail, the next scheduled run is only 10 minutes away.
           code=$(curl -sS -o /tmp/body.txt -w '%{http_code}' \
-                   --max-time 120 --retry 2 --retry-delay 10 \
+                   --max-time 90 \
                    "$HEALTH_URL" || echo "000")
 
           if [ "$code" = "200" ]; then
