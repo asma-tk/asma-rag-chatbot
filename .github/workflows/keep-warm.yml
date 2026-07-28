@@ -1,0 +1,59 @@
+name: Keep backend warm
+
+# Render's free tier idles a service after ~15 minutes without traffic, and the
+# cold start costs a visitor ~50s of waiting on their first chat message.
+# Pinging /health every 10 minutes keeps the instance resident so the portfolio
+# chatbot answers immediately.
+#
+# Why only 05:00-21:00 UTC (07:00-23:00 Paris):
+# Render's free plan allows 750 instance-hours/month. Staying warm 24/7 would
+# burn ~730h and leave no headroom for any other free service on the account.
+# 17h/day is ~500h/month, which fits comfortably. Overnight visitors fall back
+# to the widget's "server is waking up" message.
+
+on:
+  schedule:
+    # Every 10 min. Do NOT widen this past */14 — cron restarts the step
+    # sequence each hour, so a larger interval leaves a gap at the hour
+    # boundary longer than Render's 15-minute idle timeout.
+    - cron: '*/10 5-21 * * *'
+  workflow_dispatch: # lets you wake it manually from the Actions tab
+
+permissions:
+  contents: read
+
+concurrency:
+  group: keep-warm
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping /health
+        env:
+          # Change this if the Render service URL ever changes. It must match
+          # BOT_API_URL in bot-widget.js over in the mywebpage repo.
+          HEALTH_URL: https://asma-rag-chatbot-2.onrender.com/health
+        run: |
+          # Deliberately never fails the job: a scheduled workflow that goes red
+          # would email on every run while the service is down. The status is
+          # written to the run summary instead, so the Actions tab shows history.
+          code=$(curl -sS -o /tmp/body.txt -w '%{http_code}' \
+                   --max-time 120 --retry 2 --retry-delay 10 \
+                   "$HEALTH_URL" || echo "000")
+
+          if [ "$code" = "200" ]; then
+            echo "✅ awake (HTTP $code)"
+            echo "✅ Backend awake — HTTP $code" >> "$GITHUB_STEP_SUMMARY"
+            head -c 500 /tmp/body.txt >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$code" = "000" ]; then
+            echo "❌ NO RESPONSE — service is suspended, deleted, or failing to boot."
+            echo "❌ **No HTTP response.** TLS connects but nothing answers." >> "$GITHUB_STEP_SUMMARY"
+            echo "Check the Render dashboard — a warm-up ping cannot revive a suspended service." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "⚠️ unexpected HTTP $code"
+            echo "⚠️ Backend returned HTTP $code" >> "$GITHUB_STEP_SUMMARY"
+            head -c 500 /tmp/body.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
