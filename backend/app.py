@@ -1,5 +1,5 @@
 """
-Chatbot RAG avec FastAPI, ChromaDB et Ollama
+Chatbot RAG avec FastAPI, ChromaDB et Groq
 Chatbot personnel pour Asma Taberkokt
 """
 
@@ -13,26 +13,25 @@ import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from loguru import logger
-import httpx
+from groq import Groq
 
 # Charger les variables d'environnement
 load_dotenv()
 
 # Configuration
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.1")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "gpt-oss-120b")
 CHROMA_PERSIST_DIRECTORY = os.getenv("CHROMA_PERSIST_DIRECTORY", "./chroma_db")
 DATA_FILE = "data.txt"
 
-# Client HTTP Ollama
-ollama_client = httpx.Client(base_url=OLLAMA_BASE_URL, timeout=180.0)
-logger.info(f"Ollama configuré sur {OLLAMA_BASE_URL} avec le modèle {OLLAMA_MODEL}")
+# Client Groq
+groq_client = Groq(api_key=GROQ_API_KEY) if GROQ_API_KEY else None
+logger.info(f"Groq configuré avec le modèle {GROQ_MODEL}")
 
 # Initialiser FastAPI
 app = FastAPI(
     title="Chatbot Personnel Asma",
-    description="Chatbot RAG avec Ollama pour répondre aux questions sur Asma Taberkokt",
+    description="Chatbot RAG avec Groq pour répondre aux questions sur Asma Taberkokt",
     version="1.0.0"
 )
 
@@ -133,45 +132,24 @@ def index_data(chunks: List[str]):
     
     logger.info(f"✓ {len(chunks)} chunks indexés dans ChromaDB")
 
-def test_ollama_connection() -> bool:
-    """Teste la disponibilité d'Ollama."""
-    try:
-        response = ollama_client.get("/api/tags", timeout=20.0)
-        if response.status_code == 200:
-            logger.info(f"✓ Ollama disponible sur {OLLAMA_BASE_URL}")
-            return True
-        logger.warning(f"Ollama répond avec le code {response.status_code}")
-        return False
-    except Exception as e:
-        logger.warning(f"Ollama indisponible: {e}")
-        return False
 
-def ollama_chat(messages: List[dict], temperature: float = 0.3, max_tokens: int = 500) -> str:
-    """Appelle l'API chat d'Ollama."""
-    payload = {
-        "model": OLLAMA_MODEL,
-        "messages": messages,
-        "stream": False,
-        "options": {
-            "temperature": temperature,
-            "num_predict": max_tokens,
-        },
-    }
-    response = ollama_client.post("/api/chat", json=payload)
-    if response.status_code != 200:
-        raise RuntimeError(f"Ollama a répondu avec le code {response.status_code}: {response.text}")
-    data = response.json()
-    return data["message"]["content"].strip()
+
+def groq_chat(messages: List[dict], temperature: float = 0.3, max_tokens: int = 500) -> str:
+    """Appelle l'API chat de Groq."""
+    if not groq_client:
+        raise RuntimeError("GROQ_API_KEY non configurée. Ajoutez la variable d'environnement GROQ_API_KEY.")
+    completion = groq_client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=messages,
+        temperature=temperature,
+        max_tokens=max_tokens,
+    )
+    return completion.choices[0].message.content.strip()
 
 def rewrite_query(question: str, history: List[dict]) -> str:
     """
     Reformule la question utilisateur pour améliorer la recherche RAG.
-    Adapté pour Ollama.
     """
-    if not test_ollama_connection():
-        logger.warning("Ollama indisponible, utilisation de la question originale")
-        return question
-
     if not history or len(history) == 0:
         return question
 
@@ -205,7 +183,7 @@ Question actuelle :
 Reformule cette question pour optimiser une recherche sur Asma Taberkokt, son profil, ses projets, ses compétences et ses centres d'intérêt."""
 
     try:
-        rewritten = ollama_chat([
+        rewritten = groq_chat([
             {'role': 'system', 'content': system_prompt},
             {'role': 'user', 'content': user_prompt}
         ], temperature=0.2, max_tokens=100)
@@ -229,10 +207,7 @@ def retrieve_relevant_context(query: str, k: int = 3) -> List[str]:
     return results['documents'][0] if results['documents'] else []
 
 def generate_response(query: str, context: List[str], conversation_history: List[dict]) -> str:
-    """Génère une réponse avec Ollama en utilisant le contexte RAG"""
-    if not test_ollama_connection():
-        return "Le service Ollama n'est pas accessible. Vérifiez OLLAMA_BASE_URL et OLLAMA_MODEL, puis redéployez."
-    
+    """Génère une réponse avec Groq en utilisant le contexte RAG"""
     if not context:
         context_text = "Aucune information trouvée dans la base."
     else:
@@ -348,13 +323,13 @@ Contexte sur Asma Taberkokt :
     ]
 
     try:
-        content = ollama_chat(messages, temperature=0.3, max_tokens=500)
+        content = groq_chat(messages, temperature=0.3, max_tokens=500)
         content = content.replace("**", "").replace("__", "")
         content = content.replace("•", "-")
         return content.strip()
     except Exception as e:
         logger.error(f"Erreur lors de la génération de réponse: {e}")
-        return f"Désolé, je rencontre un problème technique avec Ollama. Erreur: {str(e)}"
+        return f"Désolé, je rencontre un problème technique avec Groq. Erreur: {str(e)}"
 
 
 @app.on_event("startup")
@@ -363,11 +338,13 @@ async def startup_event():
     try:
         logger.info("🚀 Démarrage de l'application...")
         
+        if not GROQ_API_KEY:
+            logger.warning("⚠️ GROQ_API_KEY non définie. Le chatbot ne fonctionnera pas sans cette clé.")
+        else:
+            logger.info("✓ GROQ_API_KEY configurée")
+
         initialize_embeddings()
         initialize_chromadb()
-
-        if not test_ollama_connection():
-            logger.warning("⚠️ Ollama n'est pas disponible. Le chatbot ne fonctionnera pas correctement tant que l'endpoint est inaccessible.")
         
         chunks = load_and_process_data()
         index_data(chunks)
@@ -389,10 +366,9 @@ async def root():
             "chat": "/chat",
             "stats": "/stats"
         },
-        "ollama": {
-            "base_url": OLLAMA_BASE_URL,
-            "model": OLLAMA_MODEL,
-            "available": test_ollama_connection(),
+        "groq": {
+            "model": GROQ_MODEL,
+            "api_key_set": bool(GROQ_API_KEY),
         }
     }
 
@@ -402,8 +378,8 @@ async def health_check():
     return {
         "status": "healthy",
         "chroma_documents": collection.count() if collection else 0,
-        "model": OLLAMA_MODEL,
-        "ollama_available": test_ollama_connection(),
+        "model": GROQ_MODEL,
+        "groq_api_key_set": bool(GROQ_API_KEY),
     }
 
 @app.post("/chat", response_model=ChatResponse)
@@ -412,8 +388,8 @@ async def chat_endpoint(request: ChatRequest):
     try:
         logger.info(f"Question reçue: {request.message}")
         
-        if not test_ollama_connection():
-            raise HTTPException(status_code=503, detail="Ollama non disponible. Vérifiez OLLAMA_BASE_URL et redéployez.")
+        if not GROQ_API_KEY:
+            raise HTTPException(status_code=503, detail="GROQ_API_KEY non configurée. Ajoutez la variable d'environnement dans Railway.")
 
         rewritten_query = rewrite_query(
             request.message,
@@ -449,7 +425,7 @@ async def get_stats():
     """Statistiques du système"""
     return {
         "total_documents": collection.count() if collection else 0,
-        "model": OLLAMA_MODEL,
-        "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
-        "ollama_available": test_ollama_connection(),
+        "model": GROQ_MODEL,
+        "embedding_model": "all-MiniLM-L6-v2",
+        "groq_api_key_set": bool(GROQ_API_KEY),
     }
