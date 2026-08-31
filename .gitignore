@@ -68,4 +68,6 @@ models/
 Thumbs.db
 .DS_Store
 /backend/.env
+/.env.example
+#env example
 .env.example
