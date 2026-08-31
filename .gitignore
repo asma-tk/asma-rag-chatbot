@@ -3,7 +3,7 @@ venv/
 env/
 ENV/
 .venv/
-
+.env.example
 # Variables d'environnement
 .env
 .env.local
@@ -67,3 +67,5 @@ models/
 # OS
 Thumbs.db
 .DS_Store
+/backend/.env
+.env.example
