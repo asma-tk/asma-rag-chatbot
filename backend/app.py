@@ -11,7 +11,7 @@ import os
 from dotenv import load_dotenv
 import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from loguru import logger
 from groq import Groq
 
