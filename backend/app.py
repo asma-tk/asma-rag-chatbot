@@ -5,9 +5,11 @@ Chatbot personnel pour Asma Taberkokt
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel
 from typing import List, Optional
 import os
+import asyncio
 from dotenv import load_dotenv
 import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -57,6 +59,10 @@ class ChatResponse(BaseModel):
 chroma_client = None
 collection = None
 embeddings = None
+
+# Statut d'initialisation : permet à /health de répondre immédiatement
+# pendant que le chargement du modèle + l'indexation se font en tâche de fond
+init_status = {"ready": False, "error": None}
 
 def initialize_embeddings():
     """Initialise le modèle d'embeddings"""
@@ -120,17 +126,21 @@ def index_data(chunks: List[str]):
         logger.info(f"✓ Collection déjà indexée ({collection.count()} documents)")
         return
     
-    logger.info("Indexation des données dans ChromaDB...")
-    
-    for i, chunk in enumerate(chunks):
-        embedding = embeddings.embed_query(chunk)
-        collection.add(
-            embeddings=[embedding],
-            documents=[chunk],
-            ids=[f"doc_{i}"]
-        )
-    
-    logger.info(f"✓ {len(chunks)} chunks indexés dans ChromaDB")
+    logger.info("Indexation des données dans ChromaDB (par lot)...")
+
+    # embed_documents() encode tous les chunks en un seul appel batché,
+    # au lieu de 87 appels embed_query() séquentiels — bien plus rapide
+    # et beaucoup moins gourmand en CPU au démarrage.
+    batch_embeddings = embeddings.embed_documents(chunks)
+    ids = [f"doc_{i}" for i in range(len(chunks))]
+
+    collection.add(
+        embeddings=batch_embeddings,
+        documents=chunks,
+        ids=ids
+    )
+
+    logger.info(f"✓ {len(chunks)} chunks indexés dans ChromaDB (en 1 lot)")
 
 
 
@@ -332,28 +342,42 @@ Contexte sur Asma Taberkokt :
         return f"Désolé, je rencontre un problème technique avec Groq. Erreur: {str(e)}"
 
 
-@app.on_event("startup")
-async def startup_event():
-    """Initialisation au démarrage de l'application"""
+def _run_heavy_initialization():
+    """Contient tout le travail bloquant (modèle, ChromaDB, indexation).
+    Exécuté hors de la boucle asyncio via un threadpool, pour ne jamais
+    bloquer le démarrage du serveur ni le healthcheck."""
+    global init_status
     try:
-        logger.info("🚀 Démarrage de l'application...")
-        
-        if not GROQ_API_KEY:
-            logger.warning("⚠️ GROQ_API_KEY non définie. Le chatbot ne fonctionnera pas sans cette clé.")
-        else:
-            logger.info("✓ GROQ_API_KEY configurée")
-
         initialize_embeddings()
         initialize_chromadb()
-        
+
         chunks = load_and_process_data()
         index_data(chunks)
-        
+
+        init_status["ready"] = True
         logger.info("✅ Application prête!")
-    
+
     except Exception as e:
+        init_status["error"] = str(e)
         logger.error(f"❌ Erreur lors de l'initialisation: {e}")
-        raise
+
+
+@app.on_event("startup")
+async def startup_event():
+    """Démarrage de l'application : ne fait qu'un check rapide puis
+    lance l'initialisation lourde en arrière-plan, sans bloquer.
+    Le serveur (et /health) répond donc immédiatement."""
+    logger.info("🚀 Démarrage de l'application...")
+
+    if not GROQ_API_KEY:
+        logger.warning("⚠️ GROQ_API_KEY non définie. Le chatbot ne fonctionnera pas sans cette clé.")
+    else:
+        logger.info("✓ GROQ_API_KEY configurée")
+
+    # Lance l'initialisation lourde (modèle + ChromaDB + indexation) dans
+    # un thread séparé, sans attendre qu'elle finisse pour terminer le
+    # démarrage. Le serveur commence donc à répondre tout de suite.
+    asyncio.create_task(run_in_threadpool(_run_heavy_initialization))
 
 @app.get("/")
 async def root():
@@ -374,9 +398,11 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    """Endpoint de santé"""
+    """Endpoint de santé : répond toujours 200 dès que le serveur écoute,
+    même si l'indexation ChromaDB tourne encore en arrière-plan."""
     return {
-        "status": "healthy",
+        "status": "healthy" if init_status["ready"] else "initializing",
+        "init_error": init_status["error"],
         "chroma_documents": collection.count() if collection else 0,
         "model": GROQ_MODEL,
         "groq_api_key_set": bool(GROQ_API_KEY),
@@ -390,6 +416,9 @@ async def chat_endpoint(request: ChatRequest):
         
         if not GROQ_API_KEY:
             raise HTTPException(status_code=503, detail="GROQ_API_KEY non configurée. Ajoutez la variable d'environnement dans Railway.")
+
+        if not init_status["ready"]:
+            raise HTTPException(status_code=503, detail="Le chatbot est encore en cours d'initialisation, réessayez dans quelques secondes.")
 
         rewritten_query = rewrite_query(
             request.message,
